@@ -1,0 +1,6 @@
+{
+    "_id": {"$oid":"614a75044fd25d678e9cd212"},
+    "username": "admin",
+    "password": "admin",
+    "category": "administrator"
+}
