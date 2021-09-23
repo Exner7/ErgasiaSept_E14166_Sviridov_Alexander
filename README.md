@@ -16,8 +16,34 @@ The application is composed by two running docker containers.
     -   Users: this collection stores all of the records of the system's users
     -   Products: this collection stores all the records of the available products
 
+    (There is also a pseudo-container, which only runs to seed the mongodb with the admin account
+    from the `mongo-seed/admin.json` file using the `mongoimport` command
+    at the start of the execution of the system and then exiting.)
+
 2.  The second docker container will be running the web-service itself.
     This web-service is implemented as a flask application.
+
+
+    #### How to Run the Application:
+
+    The only two dependencies to run this application are having [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) installed.
+
+    Once these two are present, the application can be run by the following command:
+
+    ```bash
+    (sudo) docker-compose up -d
+    ```
+
+    , where the `-d` flag is optional for 'detached mode'.
+
+    While the following command stops the execution of the application:
+
+    ```bash
+    (sudo) docker-compose down
+    ```
+    While the application is running, a client program, like [Postman](https://www.postman.com/),
+    can make HTTP Requests and interract with the application and database.
+    
     The web-service provides the following endpoints to the different types of users of the system:
 
     Guest
