@@ -1,15 +1,17 @@
-# Univeristy of Pireaus
-## Department of Digital Systems
-### Information Systems (September 2020 - 2021)
+# Digital Pharmacy API
 
-This project is a multi-container application for an imaginary pharmacy store named "Digital Pharmacy".
+## A containerized Flask/MongoDB REST API simulating an online pharmacy.
 
-This application simulates a rudimentary e-shop that would allow the customers of the pharmacy
-to search and order or purchase the pharmaceutical products that are availablel in this store.
+_Originally developed as a university project at the University of Piraeus._
+
+This project is a multi-container application for a simulated online pharmacy named "Digital Pharmacy".
+
+This application provides REST endpoints for product discovery, user authentication, cart management, and checkout. that would allow the customers of the pharmacy
+to search and order or purchase the pharmaceutical products that are available in this store.
  
-The application is composed by two running docker containers.
+The application is composed by two running Docker containers.
 
-1.  The first is a MongoDB docker container.
+1.  The first is a MongoDB Docker container.
     This container will be providing the database system for this application.
     The database itself is called "DSPharmacy" and will be containing two collections:
 
@@ -20,8 +22,8 @@ The application is composed by two running docker containers.
     from the `mongo-seed/admin.json` file using the `mongoimport` command
     at the start of the execution of the system and then exiting.)
 
-2.  The second docker container will be running the web-service itself.
-    This web-service is implemented as a flask application.
+2.  The second Docker container will be running the web service itself.
+    This web service is implemented as a flask application.
 
 
     #### How to Run the Application:
@@ -42,15 +44,15 @@ The application is composed by two running docker containers.
     (sudo) docker-compose down
     ```
     While the application is running, a client program, like [Postman](https://www.postman.com/),
-    can make HTTP Requests and interract with the application and database.
+    can make HTTP Requests and interact with the application and database.
     
-    The web-service provides the following endpoints to the different types of users of the system:
+    The web service provides the following endpoints to the different types of users of the system:
 
     Guest
     --
     -   `[POST]`      `/signup`
 
-        **Expects** JSON Data in the Body of the Request, in the following format:
+        **Expects** JSON data in the Body of the Request, in the following format:
 
         ```json
         {
@@ -72,9 +74,9 @@ The application is composed by two running docker containers.
 
     -   `[POST]`      `/login`
 
-        **Expects** JSON Data in the Body of the Request, in the following format:
+        **Expects** JSON data in the Body of the Request, in the following format:
 
-        *For an administrator Log-In*
+        *For an administrator login*
         
         ```json
         {
@@ -85,7 +87,7 @@ The application is composed by two running docker containers.
 
         ![](screenshots/login-as-admin.jpg)
 
-        *For a user Log-In:*
+        *For a user login:*
 
         ```json
         {
@@ -114,7 +116,7 @@ The application is composed by two running docker containers.
 
         ![](screenshots/product-search-authorization.jpg)
 
-        **Expects** JSON Data in the Body of the Request, in the following format:
+        **Expects** JSON data in the Body of the Request, in the following format:
 
 
         -   *to perform search for a product by ID*
@@ -124,7 +126,7 @@ The application is composed by two running docker containers.
             }
             ```
             ![](screenshots/product-search-id.jpg)
-        -   *to perform search producta by name*
+        -   *to perform search products by name*
             ```json
             {
                 "name": <string>
@@ -140,7 +142,7 @@ The application is composed by two running docker containers.
             ![](screenshots/product-search-category.jpg)
         
         Returns the products from the **Products** collection of the ***DSPharmacy*** database,
-        that are matching the search term(s) provided in the JSON Data in the Body of the Request.
+        that are matching the search term(s) provided in the JSON data in the Body of the Request.
 
     Administrator
     --
@@ -151,7 +153,7 @@ The application is composed by two running docker containers.
 
         **Expects** The *Authorization Key* in the Header of the Request as returned by `/login`
 
-        **Expects** JSON Data in the Body of the Request, in the following format:
+        **Expects** JSON data in the Body of the Request, in the following format:
 
         ```json
         {
@@ -178,7 +180,7 @@ The application is composed by two running docker containers.
 
         **Expects** The *Authorization Key* in the Header of the Request as returned by `/login`
 
-        **Expects** JSON Data in the Body of the Request, in the following format:
+        **Expects** JSON data in the Body of the Request, in the following format:
 
         ```json
         {
@@ -195,9 +197,9 @@ The application is composed by two running docker containers.
         (Besides the *_id*, only a subset of the key-value pairs is mandatory)
 
         Finds a product document in the **Products** collection of the ***DSPharmacy*** database,
-        using the *_id* provided in the JSON Data in the Body of the Request, and
+        using the *_id* provided in the JSON data in the Body of the Request, and
         updates the matching product document using the rest of the key-value pairs
-        provided in the JSON Data in the Body of the Request.
+        provided in the JSON data in the Body of the Request.
 
         ![](screenshots/create-product-after.jpg)
         ![](screenshots/login-as-admin.jpg)
@@ -211,7 +213,7 @@ The application is composed by two running docker containers.
 
         **Expects** The *Authorization Key* in the Header of the Request as returned by `/login`
 
-        **Expects** JSON Data in the Body of the Request, in the following format:
+        **Expects** JSON data in the Body of the Request, in the following format:
 
         ```json
         {
@@ -220,7 +222,7 @@ The application is composed by two running docker containers.
         ```
 
         Finds a product document in the **Products** collection of the ***DSPharmacy*** database,
-        using the *_id* provided in the JSON Data in the Body of the Request, and
+        using the *_id* provided in the JSON data in the Body of the Request, and
         deletes the matching product document
         from the **Products** collection of the ***DSPharmacy*** database
 
@@ -241,7 +243,7 @@ The application is composed by two running docker containers.
 
         ![](screenshots/add-to-cart-authorization.jpg)
 
-        **Expects** JSON Data in the Body of the Request, in the following format:
+        **Expects** JSON data in the Body of the Request, in the following format:
 
         ```json
         {
@@ -251,7 +253,7 @@ The application is composed by two running docker containers.
         ```
         ![](screenshots/add-to-cart.jpg)
         Finds a product document in the **Products** collection of the ***DSPharmacy*** database,
-        using the *_id* provided in the JSON Data in the Body of the Request, and
+        using the *_id* provided in the JSON data in the Body of the Request, and
         inserts the matching product document into the user's cart if the stock is sufficient.
 
         There are three product categories which are not available for underage users.
@@ -287,7 +289,7 @@ The application is composed by two running docker containers.
 
         ![](screenshots/remove-from-cart-authorization.jpg)
 
-        **Expects** JSON Data in the Body of the Request, in the following format:
+        **Expects** JSON data in the Body of the Request, in the following format:
 
         ```json
         {
@@ -297,7 +299,7 @@ The application is composed by two running docker containers.
 
         ![](screenshots/remove-from-cart.jpg)
 
-        Removes specified by *_id* (provided within the JSON Data in the Body of the Request)
+        Removes specified by *_id* (provided within the JSON data in the Body of the Request)
         product from user's cart.
     
     -   `[POST]`      `/user/checkout`
@@ -312,7 +314,7 @@ The application is composed by two running docker containers.
 
         ![](screenshots/checkout-authorization.jpg)
 
-        **Expects** JSON Data in the Body of the Request, in the following format:
+        **Expects** JSON data in the Body of the Request, in the following format:
 
         ```json
         {
@@ -327,7 +329,7 @@ The application is composed by two running docker containers.
         Updates stock of the purchased products.
         If the stock for a product in the cart is not sufficient, then it is skipped.
         Which means that it is not purchased and remains in the cart.
-        Adds the receipt representation to the users's order history.
+        Adds the receipt representation to the user's order history.
         Returns the receipt representation.
 
         ![](screenshots/checkout-after.jpg)
