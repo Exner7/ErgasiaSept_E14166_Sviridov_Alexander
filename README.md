@@ -28,12 +28,6 @@ to search and order or purchase the pharmaceutical products that are available i
 - Docker
 - Docker Compose
 
-## Running Locally
-
-```sh
-docker compose up -d
-```
-
 ## API
 
 ### Authentication
