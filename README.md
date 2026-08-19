@@ -20,10 +20,6 @@ to search and order or purchase the pharmaceutical products that are available i
 - Checkout and inventory management
 - Order history
 
-## Architecture
-
-[small diagram]
-
 ## Tech Stack
 
 - Python
@@ -39,22 +35,22 @@ docker compose up -d
 ## API
 
 ### Authentication
-POST /signup
-POST /login
+- POST /signup
+- POST /login
 
 ### Products
-POST /product-search
-POST /admin/create-product
-PUT /admin/update-product
-DELETE /admin/delete-product
+- POST /product-search
+- POST /admin/create-product
+- PUT /admin/update-product
+- DELETE /admin/delete-product
 
 ### Cart & Orders
-POST /user/add-to-cart
-POST /user/view-cart
-DELETE /user/remove-from-cart
-POST /user/checkout
-POST /user/view-order-history
-DELETE /user/delete-account
+- POST /user/add-to-cart
+- POST /user/view-cart
+- DELETE /user/remove-from-cart
+- POST /user/checkout
+- POST /user/view-order-history
+- DELETE /user/delete-account
 
 ## Details
  
