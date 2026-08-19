@@ -8,6 +8,55 @@ This project is a multi-container application for a simulated online pharmacy na
 
 This application provides REST endpoints for product discovery, user authentication, cart management, and checkout. that would allow the customers of the pharmacy
 to search and order or purchase the pharmaceutical products that are available in this store.
+
+## Features
+
+- User registration and authentication
+- Role-based authorization
+- Product search
+- Product management
+- Shopping cart
+- Age-restricted products
+- Checkout and inventory management
+- Order history
+
+## Architecture
+
+[small diagram]
+
+## Tech Stack
+
+- Python
+- Flask
+- MongoDB
+- Docker
+- Docker Compose
+
+## Running Locally
+
+docker compose up -d
+
+## API
+
+### Authentication
+POST /signup
+POST /login
+
+### Products
+POST /product-search
+POST /admin/create-product
+PUT /admin/update-product
+DELETE /admin/delete-product
+
+### Cart & Orders
+POST /user/add-to-cart
+POST /user/view-cart
+DELETE /user/remove-from-cart
+POST /user/checkout
+POST /user/view-order-history
+DELETE /user/delete-account
+
+## Details
  
 The application is composed by two running Docker containers.
 
