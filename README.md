@@ -30,7 +30,9 @@ to search and order or purchase the pharmaceutical products that are available i
 
 ## Running Locally
 
+```sh
 docker compose up -d
+```
 
 ## API
 
